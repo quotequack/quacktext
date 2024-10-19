@@ -1,0 +1,16 @@
+body {
+  background-color: rgba(0, 0, 0, 0.521);
+  color: white;
+  font-family: 'Rubik';
+}
+p {
+    text-align: left;
+}
+h1 {
+    text-align: center;
+}
+a {
+    text-decoration:wavy;
+    color: white;
+    transition:ease-in-out;
+}
