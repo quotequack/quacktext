@@ -13,12 +13,7 @@ A program that turns text to quacks with various format options for different pl
 
 ## Installation
 
-To install **Quacktext**, please download the appropriate installer for your operating system from the [releases page](https://github.com/your-username/your-repo-name/releases).
-
-### Windows
-1. Download the `.exe` file from the [latest release](https://github.com/quotequack/quacktext/releases).
-2. Double-click the downloaded file and follow the on-screen instructions to install Quacktext.
-3. Once installed, you can find Quacktext in your Start Menu or on your Desktop.
+To install **Quacktext**, please download the appropriate installer for your operating system from the [releases page](https://github.com/your-username/your-repo-name/releases) If you can please compile it for your operating system and share it if you are using windows or mac.
 
 ### Linux
 
