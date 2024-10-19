@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="rounded-xl bg-sky-500/50">
   <div class="title">
     <h1 class="title">QUACK TO TEXT</h1>
   </div>
@@ -18,7 +18,7 @@
 
   <div class="input">
     <h3 class="original">Enter original text</h3>
-    <input type="text", placeholder="Enter input"><br>
+    <input type="text", placeholder="Enter input" id="input-id"><br>
   </div>
 
  <hr>
@@ -36,8 +36,9 @@
   <hr>
 
   <div class="genAndOut">
-    <br><button class="gen"><strong>GENERATE</strong></button>
-    <p class="output">OUTPUT: Waiting...</p>
+    <br><button id="gen"><strong>GENERATE</strong></button>
+    <p id="output">OUTPUT: Waiting...</p>
   </div>
+  <script src="main.js"></script>
 </body>
 </html>

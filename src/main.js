@@ -1,18 +1,24 @@
 const { invoke } = window.__TAURI__.core;
 
-let greetInputEl;
-let greetMsgEl;
+const input = document.getElementById('input-id');
+const generate = document.getElementById('gen');
+const output = document.getElementById('output');
 
-async function greet() {
-  // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-  greetMsgEl.textContent = await invoke("greet", { name: greetInputEl.value });
-}
+let inputValue;
+let selectedValue;
 
-window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
-  document.querySelector("#greet-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    greet();
-  });
+input.addEventListener('input', () => {
+  inputValue = input.value;
+});
+
+
+
+generate.addEventListener('click', async () => {
+  try {
+    const fnoutput = await invoke('quack', { input: inputValue});
+    output.innerHTML = `OUTPUT: ${fnoutput}`;
+  } catch (error) {
+    console.error("Error invoking turn_quack:", error);
+    output.innerHTML = `ERROR: ${error.message}`;
+  }
 });
