@@ -40,6 +40,7 @@ fn enigo(input: String) {
     println!("{}", &input);
     let mut enigo = Enigo::new(&Settings::default()).unwrap();
     let _ = enigo.text(&input);
+    let _ = enigo.key(Key::Return);
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
