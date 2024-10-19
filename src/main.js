@@ -22,6 +22,7 @@ generate.addEventListener('click', async () => {
   try {
     const fnoutput = await invoke('quack', { input: inputValue, trans: selectedValue });
     output.innerHTML = `OUTPUT: ${fnoutput}`;
+    await invoke('enigo', { input: fnoutput });
   } catch (error) {
     console.error("Error invoking quack:", error);
     output.innerHTML = `ERROR: ${error.message || "Unknown error"}`;

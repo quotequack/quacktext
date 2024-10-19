@@ -34,12 +34,19 @@ fn quack(input: String, trans: i32) -> String {
         _ => format!("Error: Invalid translation type"),
     }
 }
+#[tauri::command]
+fn enigo(input: String) {
+    thread::sleep(Duration::from_secs(2));
+    println!("{}", &input);
+    let mut enigo = Enigo::new(&Settings::default()).unwrap();
+    let _ = enigo.text(&input);
+}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
-        .invoke_handler(tauri::generate_handler![quack])
+        .invoke_handler(tauri::generate_handler![quack, enigo])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
