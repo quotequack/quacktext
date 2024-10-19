@@ -1,7 +1,10 @@
 use rand::Rng;
+use std::thread;
+use std::time::Duration;
+use enigo::*;
 
 #[tauri::command]
-fn quack(input: String) -> String {
+fn quack(input: String, trans: i32) -> String {
     let input = input.to_lowercase();
     let tw: String = String::from("qa ");
     let te: String = String::from("qak ");
@@ -11,22 +14,25 @@ fn quack(input: String) -> String {
     let mut rnd = 0;
     let length = &input.len();
     let mut output = String::new();
-
+    
     while &output.len() < length {
-        rnd = rand::thread_rng().gen_range(1..=4);
-        if rnd == 0 {
-            output.push_str(&tw);
-        } else if rnd == 1 {
-            output.push_str(&te);
-        } else if rnd == 2 {
-            output.push_str(&fr);
-        } else if rnd == 3 {
-            output.push_str(&fv);
-        } else {
-            output.push_str(&sx);
+        rnd = rand::thread_rng().gen_range(0..=4);
+        match rnd {
+            0 => output.push_str(&tw),
+            1 => output.push_str(&te),
+            2 => output.push_str(&fr),
+            3 => output.push_str(&fv),
+            _ => output.push_str(&sx),
         }
     }
-    output
+
+    match trans {
+        0 => format!("{}\n-# {}", output, input),
+        1 => format!("{}\n{}", output, input),
+        2 => format!("**{}**\n{}", output, input),
+        3 => output,
+        _ => format!("Error: Invalid translation type"),
+    }
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
